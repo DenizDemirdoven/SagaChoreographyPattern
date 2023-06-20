@@ -28,7 +28,7 @@ Main features of the application:
 ### API Endpoints
 | API               | HTTP Verbs | Endpoints        | Action                                 |
 | ----------------- | ---------- | ---------------- | -------------------------------------- |
-| Order             | POST       | /api/orders      | To send order data as Json             |
+| Orders            | POST       | /api/orders      | To send order data as Json             |
 | Stocks            | GET        | /api/stocks      | To get stock data to check stock count |
 
 ### Json example to create a order
