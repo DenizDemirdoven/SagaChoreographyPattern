@@ -10,26 +10,26 @@
 
 ### About Project & Features
 
-- This is an Asp.Net Core Api project to understand Choreography-based Saga Pattern. There are 3 APIs in this case. First API is for create orders [Order.API], second API is for reserve product stock count [Stok.API], third API is for payment [Payment.API] 
-- Order.API and Stock.API work with MSSQL database. Migration can be initialized for databases. SQL Connection strings are in the "appsettings.json".
-- RabbitMQ (cloudamqp) was selected for message broker.
-- APIs are both subcriber and publisher. Transactions can be seen in tke image below. 
+- This is an Asp.Net Core Api project to understand Choreography-based Saga Pattern. There are 3 APIs in this case. The first API is to create orders [Order.API], the second API is to reserve product stock count [Stok.API], and the third API is for payment [Payment.API] 
+- Order.API and Stock.API work with MSSQL database. Migration can be initialized to create databases. SQL connection strings are in the "appsettings.json" file.
+- RabbitMQ (cloudamqp) is selected for message broker in this project. RabbitMQ connection strings are in the "appsettings.json" file.
+- APIs are both subcribers and publishers. Transactions can be seen in the image below. 
 
 ![alt text](https://github.com/DenizDemirdoven/SagaChoreographyPattern/blob/master/saga-pattern-design-choreography.jpg)
 
 Main features of the application:
 
-- OrdersController create orders in Order.API.
-- Stock.API subcribe the order event and if stock balance is enough for the product, stock is reserved for the buyer. 
-- Payment.API subcribe stock reserve event, if the stock count is enough and buyer credit card limit is enough then this api publishes the payment event.
-- If buyers credit card limit is not enough payment failed event would published.
-- If stock count is enough for othe order but the credit card limit is not enough then the reserved stock will be rollback. 
+- OrdersController creates orders in Order.API.
+- Stock.API subcribes the order event and if the stock balance is enough for the product, stock is reserved for the buyer. 
+- Payment.API subcribes stock reserve event, if the stock count and the buyer's credit card limit are enough, then this api publishes the payment event.
+- If the buyer's credit card limit is not enough, "payment failed event" will be published.
+- If the stock count is enough for the order but the credit card limit is not enough, then the reserved stock will be rolled back. 
 
 ### API Endpoints
 | API               | HTTP Verbs | Endpoints        | Action                                 |
 | ----------------- | ---------- | ---------------- | -------------------------------------- |
 | Order             | POST       | /api/orders      | To send order data as Json             |
-| StocksController  | GET        | /api/stocks      | To get stock data to check stock count |
+| Stocks            | GET        | /api/stocks      | To get stock data to check stock count |
 
 ### Json example to create a order
 
