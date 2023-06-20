@@ -15,7 +15,7 @@
 - RabbitMQ (cloudamqp) was selected for message broker.
 - APIs are both subcriber and publisher. Transactions can be seen in tke image below. 
 
-![alt text](http://url/to/saga-pattern-design-choreography.jpg)
+![alt text]([(https://github.com/DenizDemirdoven/SagaChoreographyPattern/blob/master/saga-pattern-design-choreography.jpg)]
 
 Main features of the application:
 
